@@ -11,30 +11,11 @@ connectDB()
 
 // Middleware
 app.use(express.urlencoded({extended: true}))
-// Middleware to parse JSON bodies
-app.use(express.json())
 
+app.use(express.json())     // Middleware to parse JSON bodies
 
 // Routes
-
-// app.get("/", (req, res) => {
-//     res.send("Test Route")
-
-// })
-
-
-
-// Mount the router
-app.use("/", bookRouter);
-
-
-
-//app.use("/", bookRoutes)
-
-
-
-
-
+app.use("/", bookRouter);   // Mount the router
 
 
 // Port

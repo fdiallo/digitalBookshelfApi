@@ -11,8 +11,6 @@ router.post("/books", async (req, res) => {
         const { title, author, isbn, publishedDate, inStock } = req.body
         const savedBook = await Book.create({ title, author, isbn, publishedDate, inStock })
 
-        // Directly passes req.body to the database
-        //const savedBook = await Book.create(req.body);
         res.status(201).json({ success: true, data: savedBook })
     } catch (error) {
         res.status(400).json({ success: false, error: error.message })
@@ -29,7 +27,6 @@ router.get("/books", async (req, res) => {
     }
 })
 
-
 // GET /:id - Retrieves a single book by its _id
 router.get("/books/:id", async (req, res) => {
   try {
@@ -40,7 +37,6 @@ router.get("/books/:id", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 // PUT /:id - Updates a book by its _id using the data in req.body
 router.put('/books/:id', async (req, res) => {

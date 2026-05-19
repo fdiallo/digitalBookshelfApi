@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+// Define Book schema
 const bookSchema = new mongoose.Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
@@ -8,8 +9,6 @@ const bookSchema = new mongoose.Schema({
     inStock: { type: Boolean, default: true }
 })
 
-
-//const Book = mongoose.Model("Book", bookSchema)
 const Book = mongoose.model("Book", bookSchema)
 
 module.exports = Book
