@@ -1,23 +1,38 @@
 // Dependencies
-
 const express = require("express")
 const app = express()
 require("dotenv").config()
 
-const {connectDB} = require("./db/connection")
+const { connectDB } = require("./db/connection.js")
+
+const bookRouter = require("./routes/bookRoutes.js")
+
+connectDB()
 
 // Middleware
 app.use(express.urlencoded({extended: true}))
+// Middleware to parse JSON bodies
+app.use(express.json())
 
 
 // Routes
 
-app.get("/", (req, res) => {
-    res.send("Test Route")
+// app.get("/", (req, res) => {
+//     res.send("Test Route")
 
-})
+// })
 
-connectDB()
+
+
+// Mount the router
+app.use("/", bookRouter);
+
+
+
+//app.use("/", bookRoutes)
+
+
+
 
 
 
